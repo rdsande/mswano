@@ -26,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   const isTransparent = !isScrolled;
-  const logoSrc = isTransparent ? "/brand/mswano-logo-light.png" : "/brand/mswano-logo.png";
+  const logoSrc = isTransparent ? "brand/mswano-logo-light.png" : "brand/mswano-logo.png";
 
   return (
     <nav className={`fixed left-0 top-0 z-50 w-full border-b px-5 py-5 text-[11px] uppercase tracking-[0.24em] transition-all duration-300 md:px-10 ${isTransparent ? "border-white/15 bg-transparent text-white" : "border-black/10 bg-background/90 text-mswano-primary backdrop-blur-xl"}`}>

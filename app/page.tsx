@@ -52,6 +52,12 @@ const LinkedInIcon = () => (
   </svg>
 );
 
+const WhatsAppIcon = () => (
+  <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true">
+    <path d="M12.04 3a8.86 8.86 0 0 0-7.56 13.5L3.5 21l4.6-.96A8.86 8.86 0 1 0 12.04 3Zm0 1.7a7.16 7.16 0 0 1 0 14.32 7.1 7.1 0 0 1-3.62-.98l-.35-.21-2.2.46.47-2.13-.23-.36A7.16 7.16 0 0 1 12.04 4.7Zm-3.1 3.66c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2s.86 2.31.98 2.48c.12.16 1.66 2.65 4.12 3.6 2.04.8 2.46.64 2.9.6.44-.04 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.02-.37.1-.49.11-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.48Z" />
+  </svg>
+);
+
 const highlights = [
   "Fully furnished modern apartments",
   "Two-bedroom apartments",
@@ -88,12 +94,25 @@ const amenities = [
 ];
 
 const galleryItems = [
-  { title: "Bedroom", image: "/images/bed.jpeg" },
-  { title: "Bedroom Detail", image: "/images/bed_closeup.jpeg" },
-  { title: "Living Area", image: "/images/couch.jpeg" },
-  { title: "Seating Area", image: "/images/seating.jpeg" },
-  { title: "Wardrobe", image: "/images/wardrobe.jpeg" },
-  { title: "Exterior", image: "/images/outside_landscape.png" },
+  "/images/bathroom.jpg",
+  "/images/bed.jpeg",
+  "/images/bed2.jpeg",
+  "/images/bed2.jpg",
+  "/images/bed_closeup.jpeg",
+  "/images/bed_lowangle.jpeg",
+  "/images/bed_side.jpg",
+  "/images/couch.jpeg",
+  "/images/couch.jpg",
+  "/images/detail.jpg",
+  "/images/locations2.jpg",
+  "/images/maptop.jpg",
+  "/images/outside_landscape.png",
+  "/images/outside_potrait.png",
+  "/images/seating.jpeg",
+  "/images/seating2.jpg",
+  "/images/seating_close.jpeg",
+  "/images/seating_close.jpg",
+  "/images/wardrobe.jpeg",
 ];
 
 const testimonials = [
@@ -370,33 +389,39 @@ export default function Home() {
 
       <section
         id="gallery"
-        className="bg-white/50 px-5 py-24 md:px-10 md:py-32"
+        className="overflow-hidden bg-white/50 py-24 md:py-32"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <SectionLabel>Gallery</SectionLabel>
             <h2 className="mt-8 max-w-3xl font-serif text-4xl font-medium leading-tight tracking-[-0.035em] text-mswano-primary md:text-6xl">
               Take a glimpse into your next stay at Mswano Apartments.
             </h2>
           </FadeIn>
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {galleryItems.map((item, index) => (
-              <FadeIn key={item.title} delay={index * 0.06} direction="none">
-                <div className="relative flex min-h-72 items-end overflow-hidden rounded-lg p-6 text-white">
+        </div>
+        <div className="mt-14 w-screen">
+          <FadeIn delay={0.08} direction="none">
+            <div className="gallery-carousel flex w-screen snap-x gap-1 overflow-x-auto bg-white/50 py-1">
+              {galleryItems.map((image, index) => (
+                <div
+                  key={image}
+                  className={`relative h-[340px] shrink-0 snap-center overflow-hidden bg-mswano-stone md:h-[460px] ${
+                    index % 3 === 1
+                      ? "min-w-[86vw] md:min-w-[58vw] lg:min-w-[54vw]"
+                      : "min-w-[64vw] md:min-w-[25vw] lg:min-w-[22vw]"
+                  }`}
+                >
                   <Image
-                    src={item.image}
-                    alt={item.title}
+                    src={image}
+                    alt={`Mswano Apartments gallery image ${index + 1}`}
                     fill
-                    className="object-cover transition duration-700 hover:scale-105"
+                    sizes="(max-width: 768px) 86vw, (max-width: 1024px) 58vw, 54vw"
+                    className="object-cover object-center transition duration-700 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-                  <span className="relative font-serif text-2xl md:text-3xl">
-                    {item.title}
-                  </span>
                 </div>
-              </FadeIn>
-            ))}
-          </div>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -404,10 +429,10 @@ export default function Home() {
         <FadeIn fullWidth direction="none">
           <div className="relative flex min-h-[450px] items-end md:min-h-[600px]">
             <Image
-              src="/images/maptop.jpg"
+              src="/images/maptop.jpg?v=2"
               alt="Mswano Apartments location map"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[center_center]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             <div className="relative w-full px-5 pb-12 md:px-10 md:pb-20">
@@ -515,30 +540,45 @@ export default function Home() {
 
       <section id="booking" className="px-5 pb-10 md:px-10">
         <FadeIn direction="none">
-          <div className="mx-auto grid max-w-7xl gap-10 rounded-xl bg-white p-8 shadow-sm ring-1 ring-black/5 md:grid-cols-[1fr_0.8fr] md:p-14">
-            <div>
-              <p className="text-xs uppercase tracking-[0.28em] text-mswano-accent">
-                Booking
-              </p>
-              <h2 className="mt-5 font-serif text-4xl leading-tight tracking-[-0.035em] text-mswano-primary md:text-6xl">
-                Book Your Stay with Ease
-              </h2>
-              <p className="mt-6 max-w-md leading-7 text-mswano-secondary">
-                Reserve your apartment today and experience comfort like never
-                before. Our team is ready to assist you with your booking.
-              </p>
+          <div className="mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-xl bg-white p-4 shadow-sm ring-1 ring-black/5 md:grid-cols-[1fr_0.8fr] md:p-5">
+            <div className="relative flex min-h-[420px] items-end overflow-hidden rounded-lg p-8 text-white md:min-h-full md:p-10">
+              <Image
+                src="/images/couch.jpeg"
+                alt="Mswano Apartments living area"
+                fill
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/10" />
+              <div className="relative">
+                <p className="text-xs uppercase tracking-[0.28em] text-mswano-accent">
+                  Booking
+                </p>
+                <h2 className="mt-5 font-serif text-4xl leading-tight tracking-[-0.035em] text-white md:text-6xl">
+                  Book Your Stay with Ease
+                </h2>
+                <p className="mt-6 max-w-md leading-7 text-white/85">
+                  Reserve your apartment today and experience comfort like never
+                  before. Our team is ready to assist you with your booking.
+                </p>
+              </div>
             </div>
-            <form className="grid gap-4">
-              <input
-                type="date"
-                className="rounded-lg border border-black/10 bg-background px-6 py-4 text-mswano-secondary outline-none focus:border-mswano-accent"
-                aria-label="Check-in Date"
-              />
-              <input
-                type="date"
-                className="rounded-lg border border-black/10 bg-background px-6 py-4 text-mswano-secondary outline-none focus:border-mswano-accent"
-                aria-label="Check-out Date"
-              />
+            <form className="grid gap-4 p-4 md:p-8">
+              <label className="grid gap-2 text-sm font-medium text-mswano-primary">
+                Check-in Date
+                <input
+                  type="date"
+                  className="rounded-lg border border-black/10 bg-background px-6 py-4 text-mswano-secondary outline-none focus:border-mswano-accent"
+                  aria-label="Check-in Date"
+                />
+              </label>
+              <label className="grid gap-2 text-sm font-medium text-mswano-primary">
+                Check-out Date
+                <input
+                  type="date"
+                  className="rounded-lg border border-black/10 bg-background px-6 py-4 text-mswano-secondary outline-none focus:border-mswano-accent"
+                  aria-label="Check-out Date"
+                />
+              </label>
               <input
                 className="rounded-lg border border-black/10 bg-background px-6 py-4 outline-none focus:border-mswano-accent"
                 placeholder="Number of Guests"
@@ -569,7 +609,7 @@ export default function Home() {
           <div>
             <div className="relative h-10 w-48">
               <Image
-                src="/brand/mswano-logo.png"
+                src="brand/mswano-logo.png"
                 alt="Mswano Apartments"
                 fill
                 className="object-contain object-left"
@@ -629,6 +669,15 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <a
+        href="https://wa.me/255663603224"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Contact Mswano Apartments on WhatsApp"
+        className="whatsapp-float fixed bottom-6 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/25 ring-4 ring-white/70 transition hover:scale-105 md:bottom-8 md:right-8"
+      >
+        <WhatsAppIcon />
+      </a>
     </main>
   );
 }

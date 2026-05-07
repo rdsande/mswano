@@ -6,6 +6,7 @@
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev -p 3000",
     "build": "next build",
+    "build:cpanel": "rm -rf .next out mswano-cpanel-upload.zip && next build && cp .htaccess out/.htaccess && zip -r mswano-cpanel-upload.zip out",
     "start": "next start",
     "lint": "eslint"
   },
