@@ -2,7 +2,7 @@ import FadeIn from "@/components/FadeIn";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden rounded-b-xl bg-mswano-primary text-white md:rounded-b-2xl">
+    <section className="relative min-h-[95vh] overflow-hidden rounded-b-xl bg-mswano-primary text-white md:rounded-b-2xl">
       <div className="video-mask absolute inset-0 opacity-70">
         <iframe
           src="https://www.youtube.com/embed/sOjacAtUBqo?autoplay=1&mute=1&controls=0&loop=1&playlist=sOjacAtUBqo&playsinline=1&rel=0&modestbranding=1"
@@ -13,12 +13,12 @@ export default function Hero() {
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(200,169,106,0.22),transparent_34%)]" />
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-5 pb-12 pt-32 md:px-10 md:pb-20">
+      <div className="relative z-10 mx-auto flex min-h-[95vh] max-w-7xl flex-col justify-end px-5 pb-12 pt-28 md:px-10 md:pb-16">
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <FadeIn direction="up">
             <p className="mb-5 text-xs uppercase tracking-[0.32em] text-mswano-accent">Modern living, redefined</p>
-            <h1 className="max-w-4xl font-serif text-5xl font-medium leading-[0.96] tracking-[-0.04em] md:text-7xl lg:text-8xl">
-              A True Home Away From Home
+            <h1 className="max-w-4xl font-serif text-4xl font-medium leading-[0.96] tracking-[-0.04em] md:text-5xl lg:text-6xl">
+              A true home away from home
             </h1>
           </FadeIn>
           <FadeIn delay={0.18} direction="up" className="max-w-md md:justify-self-end">

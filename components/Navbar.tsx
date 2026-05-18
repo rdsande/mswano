@@ -7,12 +7,12 @@ import { Menu, Xmark } from "iconoir-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
-  { name: "About", href: "#about" },
-  { name: "Apartments", href: "#apartments" },
-  { name: "Amenities", href: "#amenities" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Location", href: "#location" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "/#about" },
+  { name: "Apartments", href: "/#apartments" },
+  { name: "Amenities", href: "/#amenities" },
+  { name: "Gallery", href: "/#gallery" },
+  { name: "Location", href: "/#location" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -26,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   const isTransparent = !isScrolled;
-  const logoSrc = isTransparent ? "brand/mswano-logo-light.png" : "brand/mswano-logo.png";
+  const logoSrc = isTransparent ? "/brand/mswano-logo-light.png" : "/brand/mswano-logo.png";
 
   return (
     <nav className={`fixed left-0 top-0 z-50 w-full border-b px-5 py-5 text-[11px] uppercase tracking-[0.24em] transition-all duration-300 md:px-10 ${isTransparent ? "border-white/15 bg-transparent text-white" : "border-black/10 bg-background/90 text-mswano-primary backdrop-blur-xl"}`}>
@@ -51,7 +51,7 @@ export default function Navbar() {
           <a href="tel:+255663603224" className="transition hover:text-mswano-accent">
             +255 663 603224
           </a>
-          <Link href="#booking" className="rounded-lg border border-current px-5 py-3 transition hover:border-mswano-accent hover:bg-mswano-accent hover:text-mswano-primary">
+          <Link href="/booking" className="rounded-lg border border-current px-5 py-3 transition hover:border-mswano-accent hover:bg-mswano-accent hover:text-mswano-primary">
             Book
           </Link>
         </div>
@@ -67,7 +67,7 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link href="#booking" onClick={() => setIsMenuOpen(false)} className="rounded-lg bg-mswano-accent px-7 py-4 text-xs uppercase tracking-[0.24em] text-mswano-primary">
+            <Link href="/booking" onClick={() => setIsMenuOpen(false)} className="rounded-lg bg-mswano-accent px-7 py-4 text-xs uppercase tracking-[0.24em] text-mswano-primary">
               Book Your Stay
             </Link>
           </motion.div>
