@@ -45,7 +45,7 @@ export default function BookingPage() {
           special_requests: form.specialRequests || "None",
           to_email: "rodgers@tekleodigital.co.tz",
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
       );
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: "smooth" });

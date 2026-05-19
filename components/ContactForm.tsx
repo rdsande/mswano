@@ -28,7 +28,7 @@ export default function ContactForm() {
           message: form.message,
           to_email: "rodgers@tekleodigital.co.tz",
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
       );
       setStatus("success");
       setForm({ name: "", email: "", phone: "", message: "" });
