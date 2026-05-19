@@ -1,0 +1,41 @@
+Options -MultiViews
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve existing files and directories directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Route /booking/ to its index.html
+  RewriteRule ^booking/?$ /booking/index.html [L]
+
+  # Fallback to root index.html
+  RewriteRule ^ /index.html [L]
+</IfModule>
+
+# Correct MIME types so browsers load CSS and JS properly
+<IfModule mod_mime.c>
+  AddType application/javascript .js mjs
+  AddType text/css .css
+  AddType image/svg+xml .svg
+  AddType application/json .json
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+</IfModule>
+
+# Allow access to _next static assets (underscore folders can be blocked)
+<FilesMatch "\.(?:css|js|mjs|json|woff2?|svg|png|jpe?g|webp|ico)$">
+  Require all granted
+</FilesMatch>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+</IfModule>
